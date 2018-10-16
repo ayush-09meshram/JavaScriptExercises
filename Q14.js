@@ -30,3 +30,23 @@ console.log(myObj.sort(function(a, b){return a.age < b.age}));
 Exception: TypeError: key.get is not a function
 @Scratchpad/3:32:12
 */
+
+
+const arrayToObject = (array, keyField) =>
+	array.reduce((obj, item) => {
+		if(obj[item[keyField]] == undefined){
+			obj[item[keyField]] = [];
+			obj[item[keyField]].push(item);
+		}
+		else
+		  obj[item[keyField]].push(item);
+		return obj;
+	},{});
+
+const peopleObject = arrayToObject(myObj, "occupation");
+console.log(peopleObject);
+
+//using map to get all names
+var names = [];
+names = myObj.map(function(a){return a.name});
+console.log(names);
